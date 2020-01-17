@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 
-namespace Recurso.BulkInsertLibrary
+namespace Recurso.BulkInsert
 {
     public static class DataTableExtensions
     {

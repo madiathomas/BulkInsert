@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace Recurso.BulkInsertLibrary.Sample.Common
+namespace Recurso.BulkInsert.Sample.Common
 {
     public class CSVHelper
     {

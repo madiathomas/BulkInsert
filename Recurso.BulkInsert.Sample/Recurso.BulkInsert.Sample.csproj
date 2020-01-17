@@ -6,11 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Recurso.BulkInsertLibrary" Version="2.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Recurso.BulkInsertLibrary.Sample.Common\Recurso.BulkInsertLibrary.Sample.Common.csproj" />
+    <ProjectReference Include="..\Recurso.BulkInsert.Sample.Common\Recurso.BulkInsert.Sample.Common.csproj" />
+    <ProjectReference Include="..\Recurso.BulkInsert\Recurso.BulkInsert.csproj" />
   </ItemGroup>
 
   <ItemGroup>

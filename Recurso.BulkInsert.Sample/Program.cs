@@ -1,11 +1,11 @@
-﻿using Recurso.BulkInsertLibrary.Sample.Common;
+﻿using Recurso.BulkInsert.Sample.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Recurso.BulkInsertLibrary.Sample
+namespace Recurso.BulkInsert.Sample
 {
     class Program
     {

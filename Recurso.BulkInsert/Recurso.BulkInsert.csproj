@@ -5,17 +5,16 @@
     <Description>Bulk Insert Datatable or generic list into a SQL Server Database table</Description>
     <Copyright>https://licenses.nuget.org/MIT</Copyright>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/madiathomas/Recurso.BulkInsertLibrary</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/madiathomas/Recurso.BulkInsert</PackageProjectUrl>
     <PackageIcon>recurso 400 x 400.png</PackageIcon>
     <PackageIconUrl />
-    <RepositoryUrl>https://github.com/madiathomas/Recurso.BulkInsertLibrary</RepositoryUrl>
+    <RepositoryUrl>https://github.com/madiathomas/Recurso.BulkInsert</RepositoryUrl>
     <PackageTags>Bulk Insert, Bulk Save, List to Datatable, Datatable</PackageTags>
-    <PackageReleaseNotes>- Commented and documented code. Renamed BulkInsert class to SQLServerBulkInsert
-- Breaking changes: BulkInsert class renamed to a more specific SQLServerBulkInsert
-- Sample app updated</PackageReleaseNotes>
+    <PackageReleaseNotes>Added nuget package</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>2.0.1</Version>
+    <Version>1.0.0</Version>
+    <PackageId>Recurso.BulkInsert</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Recurso.BulkInsertLibrary
+namespace Recurso.BulkInsert
 {
     public class SQLServerBulkInsert : IBulkInsert
     {
