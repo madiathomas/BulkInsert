@@ -10,10 +10,11 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/madiathomas/Recurso.BulkInsertLibrary</RepositoryUrl>
     <PackageTags>Bulk Insert, Bulk Save, List to Datatable, Datatable</PackageTags>
-    <PackageReleaseNotes>- SqlBulkCopyOptions added. Previously, it was set to default</PackageReleaseNotes>
+    <PackageReleaseNotes>- SqlBulkCopyOptions added. Previously, it was set to default
+- Extracted an interface of BulkInsert class</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Recurso.BulkInsertLibrary
 {
-    public class BulkInsert
+    public class BulkInsert : IBulkInsert
     {
         /// <summary>
         /// Save a generic list into a database table. If destinationTableName isn't supplied, it will use name of T as Table name.
@@ -31,7 +31,7 @@ namespace Recurso.BulkInsertLibrary
         /// <param name="connectionString"></param>
         /// <param name="destinationTableName"></param>
         /// <returns></returns>
-        public async Task Save<T>(DataTable dataTable, string connectionString, SqlBulkCopyOptions sqlBulkCopyOptions= SqlBulkCopyOptions.Default, string destinationTableName = null)
+        public async Task Save<T>(DataTable dataTable, string connectionString, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default, string destinationTableName = null)
         {
             using SqlBulkCopy bulkCopy = new SqlBulkCopy(connectionString, sqlBulkCopyOptions)
             {
