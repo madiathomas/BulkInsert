@@ -15,10 +15,7 @@ namespace Recurso.BulkInsertLibrary.Sample
         {
             try
             {
-                var bulkInsert = new BulkInsert()
-                {
-                    ConnectionString = connectionString
-                };
+                var bulkInsert = new BulkInsert(connectionString);
 
                 var people = GetPeople();
 

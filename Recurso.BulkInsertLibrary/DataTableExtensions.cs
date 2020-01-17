@@ -12,20 +12,22 @@ namespace Recurso.BulkInsertLibrary
         /// This method converts a generic list into a DataTable. Properties will be used as columns.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="data"></param>
+        /// <param name="data">Generic list of data that you want to copy to a DataTable.</param>
         /// <returns></returns>
         public static DataTable CopyToDataTable<T>(this List<T> data)
         {
-            var dataTable = new DataTable(nameof(T));
+            var dataTable = new DataTable(typeof(T).Name);
+
+            // Get properties and sort them by metadatatoken to preserve their order. If it isn in an incorrect order, bulk insert will fail.
             var properties = typeof(T).GetProperties().OrderBy(_ => _.MetadataToken);
 
-            //PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(T));
-
+            // Add colums to the datatable
             foreach (var prop in properties)
             {
                 dataTable.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
             }
 
+            // Add values to the dataTable
             foreach (T item in data)
             {
                 DataRow row = dataTable.NewRow();
