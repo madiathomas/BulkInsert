@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Recurso.BulkInsertLibrary.Sample
+namespace Recurso.BulkInsertLibrary.Sample.Common
 {
     public class Person
     {

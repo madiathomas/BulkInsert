@@ -10,6 +10,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Recurso.BulkInsertLibrary.Sample.Common\Recurso.BulkInsertLibrary.Sample.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="People.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
