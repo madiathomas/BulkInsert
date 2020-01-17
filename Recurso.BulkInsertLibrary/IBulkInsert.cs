@@ -9,7 +9,8 @@ namespace Recurso.BulkInsertLibrary
     {
         public string ConnectionString { get; set; }
 
-        Task Save<T>(DataTable dataTable, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default, string destinationTableName = null);
-        Task Save<T>(List<T> list, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default, string destinationTableName = null);
+        Task Save<T>(DataTable dataTable, string destinationTableName = null, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default);
+
+        Task Save<T>(List<T> list, string destinationTableName = null, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default);
     }
 }

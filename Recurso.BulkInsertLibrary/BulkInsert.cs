@@ -18,7 +18,7 @@ namespace Recurso.BulkInsertLibrary
         /// <param name="list"></param>
         /// <param name="connectionString"></param>
         /// <returns></returns>
-        public async Task Save<T>(List<T> list, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default, string destinationTableName = null)
+        public async Task Save<T>(List<T> list, string destinationTableName = null, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default)
         {
             if (string.IsNullOrWhiteSpace(ConnectionString))
             {
@@ -27,7 +27,7 @@ namespace Recurso.BulkInsertLibrary
 
             using var dataTable = list.CopyToDataTable();
 
-            await Save(list, sqlBulkCopyOptions, destinationTableName);
+            await Save(list, destinationTableName, sqlBulkCopyOptions);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Recurso.BulkInsertLibrary
         /// <param name="connectionString"></param>
         /// <param name="destinationTableName"></param>
         /// <returns></returns>
-        public async Task Save<T>(DataTable dataTable, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default, string destinationTableName = null)
+        public async Task Save<T>(DataTable dataTable, string destinationTableName = null, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default)
         {
             if (string.IsNullOrWhiteSpace(ConnectionString))
             {
