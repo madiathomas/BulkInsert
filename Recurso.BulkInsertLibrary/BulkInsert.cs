@@ -9,6 +9,8 @@ namespace Recurso.BulkInsertLibrary
 {
     public class BulkInsert : IBulkInsert
     {
+        public string ConnectionString { get; set; }
+
         /// <summary>
         /// Save a generic list into a database table. If destinationTableName isn't supplied, it will use name of T as Table name.
         /// </summary>
@@ -16,11 +18,16 @@ namespace Recurso.BulkInsertLibrary
         /// <param name="list"></param>
         /// <param name="connectionString"></param>
         /// <returns></returns>
-        public async Task Save<T>(List<T> list, string connectionString, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default, string destinationTableName = null)
+        public async Task Save<T>(List<T> list, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default, string destinationTableName = null)
         {
+            if (string.IsNullOrWhiteSpace(ConnectionString))
+            {
+                throw new Exception("Please set ConnectionString property");
+            }
+
             using var dataTable = list.CopyToDataTable();
 
-            await Save(list, connectionString, sqlBulkCopyOptions, destinationTableName);
+            await Save(list, sqlBulkCopyOptions, destinationTableName);
         }
 
         /// <summary>
@@ -31,9 +38,14 @@ namespace Recurso.BulkInsertLibrary
         /// <param name="connectionString"></param>
         /// <param name="destinationTableName"></param>
         /// <returns></returns>
-        public async Task Save<T>(DataTable dataTable, string connectionString, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default, string destinationTableName = null)
+        public async Task Save<T>(DataTable dataTable, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default, string destinationTableName = null)
         {
-            using SqlBulkCopy bulkCopy = new SqlBulkCopy(connectionString, sqlBulkCopyOptions)
+            if (string.IsNullOrWhiteSpace(ConnectionString))
+            {
+                throw new Exception("Please set ConnectionString property");
+            }
+
+            using SqlBulkCopy bulkCopy = new SqlBulkCopy(this.ConnectionString, sqlBulkCopyOptions)
             {
                 DestinationTableName = destinationTableName ?? dataTable.TableName
             };
