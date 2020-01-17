@@ -2,10 +2,32 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Description>Bulk Insert Datatable or generic list into a SQL Server Database table</Description>
+    <Copyright>https://licenses.nuget.org/MIT</Copyright>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/madiathomas/Recurso.BulkInsertLibrary</PackageProjectUrl>
+    <PackageIcon>recurso 400 x 400.png</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/madiathomas/Recurso.BulkInsertLibrary</RepositoryUrl>
+    <PackageTags>Bulk Insert, Bulk Save, List to Datatable, Datatable</PackageTags>
+    <PackageReleaseNotes>Bulk Insert Datatable or generic list into a SQL Server Database table</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="License.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="recurso 400 x 400.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
