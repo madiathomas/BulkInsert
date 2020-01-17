@@ -16,11 +16,11 @@ namespace Recurso.BulkInsertLibrary
         /// <param name="list"></param>
         /// <param name="connectionString"></param>
         /// <returns></returns>
-        public async Task Save<T>(List<T> list, string connectionString, string destinationTableName = null)
+        public async Task Save<T>(List<T> list, string connectionString, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default, string destinationTableName = null)
         {
             using var dataTable = list.CopyToDataTable();
 
-            await Save(list, connectionString, destinationTableName);
+            await Save(list, connectionString, sqlBulkCopyOptions, destinationTableName);
         }
 
         /// <summary>
@@ -31,9 +31,9 @@ namespace Recurso.BulkInsertLibrary
         /// <param name="connectionString"></param>
         /// <param name="destinationTableName"></param>
         /// <returns></returns>
-        public async Task Save<T>(DataTable dataTable, string connectionString, string destinationTableName = null)
+        public async Task Save<T>(DataTable dataTable, string connectionString, SqlBulkCopyOptions sqlBulkCopyOptions= SqlBulkCopyOptions.Default, string destinationTableName = null)
         {
-            using SqlBulkCopy bulkCopy = new SqlBulkCopy(connectionString, SqlBulkCopyOptions.Default)
+            using SqlBulkCopy bulkCopy = new SqlBulkCopy(connectionString, sqlBulkCopyOptions)
             {
                 DestinationTableName = destinationTableName ?? dataTable.TableName
             };
