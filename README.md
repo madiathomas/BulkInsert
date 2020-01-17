@@ -7,5 +7,6 @@ This library is also downloadable as a Nuget package.
 To install it, simply run this nuget command on **Install-Package Recurso.BulkInsertLibrary**.
 
 [1] https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlbulkcopy?view=netframework-4.8
+
 [2] https://docs.microsoft.com/en-us/dotnet/api/system.data.datatable?view=netstandard-2.1
 
