@@ -1,0 +1,1 @@
+﻿Run CreatePeopleDatabase.sql script to create database required for this sample.

@@ -27,7 +27,7 @@ namespace Recurso.BulkInsertLibrary
 
             using var dataTable = list.CopyToDataTable();
 
-            await Save(list, destinationTableName, sqlBulkCopyOptions);
+            await Save<T>(dataTable, destinationTableName, sqlBulkCopyOptions);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Recurso.BulkInsertLibrary
 
             using SqlBulkCopy bulkCopy = new SqlBulkCopy(this.ConnectionString, sqlBulkCopyOptions)
             {
-                DestinationTableName = destinationTableName ?? dataTable.TableName
+                DestinationTableName = destinationTableName ?? typeof(T).Name
             };
 
             await bulkCopy.WriteToServerAsync(dataTable);

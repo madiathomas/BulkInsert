@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recurso.BulkInsertLibrary", "Recurso.BulkInsertLibrary\Recurso.BulkInsertLibrary.csproj", "{BEF544D4-9A6A-415D-B2A4-3B65719D4F4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recurso.BulkInsertLibrary", "Recurso.BulkInsertLibrary\Recurso.BulkInsertLibrary.csproj", "{BEF544D4-9A6A-415D-B2A4-3B65719D4F4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recurso.BulkInsertLibrary.Sample", "Recurso.BulkInsertLibrary.Sample\Recurso.BulkInsertLibrary.Sample.csproj", "{99ABB086-5A46-41D2-9A71-24F68B294340}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BEF544D4-9A6A-415D-B2A4-3B65719D4F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEF544D4-9A6A-415D-B2A4-3B65719D4F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEF544D4-9A6A-415D-B2A4-3B65719D4F4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99ABB086-5A46-41D2-9A71-24F68B294340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99ABB086-5A46-41D2-9A71-24F68B294340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99ABB086-5A46-41D2-9A71-24F68B294340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99ABB086-5A46-41D2-9A71-24F68B294340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
