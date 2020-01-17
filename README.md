@@ -4,7 +4,7 @@ that inserting one by one. It uses SQLBulkCopy[1] in the background. You can pas
 
 This library is also downloadable as a Nuget package.
 
-To install it, simply run this nuget command on **Install-Package Recurso.BulkInsertLibrary**.
+To install it, simply run this nuget command on **Install-Package Recurso.BulkInsert**.
 
 [1] https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlbulkcopy?view=netstandard-2.1
 
