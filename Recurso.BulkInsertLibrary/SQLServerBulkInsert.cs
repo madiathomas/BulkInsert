@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Recurso.BulkInsertLibrary
 {
-    public class BulkInsert : IBulkInsert
+    public class SQLServerBulkInsert : IBulkInsert
     {
         /// <summary>
         /// Database connection string to be used to bulk insert data
         /// </summary>
         public string ConnectionString { get; set; }
 
-        public BulkInsert(string connectionString)
+        public SQLServerBulkInsert(string connectionString)
         {
             ConnectionString = connectionString;
         }
