@@ -14,4 +14,4 @@ This library uses [SQLBulkCopy](https://docs.microsoft.com/en-us/dotnet/api/syst
 
 This library is also downloadable as a [Nuget package](https://www.nuget.org/packages/Recurso.BulkInsert).
 
-To install it, simply run this nuget command on **Install-Package Recurso.BulkInsert**
+To install it, simply run this nuget command: **Install-Package Recurso.BulkInsert**.
