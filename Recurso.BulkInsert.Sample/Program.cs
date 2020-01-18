@@ -24,7 +24,7 @@ namespace Recurso.BulkInsert.Sample
                * Individual inserts took more than 149 seconds for 10,000 records
              */
 
-              int numberOfRecords = 10000;
+              int numberOfRecords = 1000;
 
                 // Load list of people from a file
                 List<Person> people = CSVHelper.GetPeople(fileName: "People.csv").Take(numberOfRecords).ToList();
@@ -45,7 +45,7 @@ namespace Recurso.BulkInsert.Sample
         {
             var database = new Database(connectionString);
 
-            Console.WriteLine($"Inserting {people.Count} records using BulkInsert...");
+            Console.WriteLine($"Inserting {people.Count} records individually...");
 
             // Use stop watch to determine how fast the update was
             var stopWatch = new Stopwatch();
@@ -62,7 +62,7 @@ namespace Recurso.BulkInsert.Sample
             stopWatch.Stop();
 
             // Display time elapsed
-            Console.WriteLine($"Time Elapsed using BulkInsert: {stopWatch.Elapsed.TotalSeconds}\n");
+            Console.WriteLine($"Time Elapsed inserting records individually: {stopWatch.Elapsed.TotalSeconds}\n");
         }
 
         private static async Task InsertUsingBulkInsert(List<Person> people)
@@ -70,7 +70,7 @@ namespace Recurso.BulkInsert.Sample
             // Innitialise BulkInsert object
             var bulkInsert = new SQLServerBulkInsert(connectionString);
 
-            Console.WriteLine($"Inserting {people.Count} records individually...");
+            Console.WriteLine($"Inserting {people.Count} records using BulkInsert...");
 
             // Use stop watch to determine how fast the update was
             var stopWatch = new Stopwatch();
