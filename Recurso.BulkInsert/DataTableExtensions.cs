@@ -18,10 +18,10 @@ namespace Recurso.BulkInsert
         {
             var dataTable = new DataTable(typeof(T).Name);
 
-            // Get properties and sort them by metadatatoken to preserve their order. If it isn in an incorrect order, bulk insert will fail.
+            // Get properties and sort them by metadatatoken to preserve their order. If it is in an incorrect order, bulk insert will fail.
             var properties = typeof(T).GetProperties().OrderBy(_ => _.MetadataToken);
 
-            // Add colums to the datatable
+            // Add colums to the dataTable
             foreach (var prop in properties)
             {
                 dataTable.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);

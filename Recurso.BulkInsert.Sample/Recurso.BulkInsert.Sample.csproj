@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Recurso.BulkInsert.Sample.Common\Recurso.BulkInsert.Sample.Common.csproj" />
     <ProjectReference Include="..\Recurso.BulkInsert\Recurso.BulkInsert.csproj" />
   </ItemGroup>
 

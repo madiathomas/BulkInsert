@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Recurso.BulkInsert.Sample.Common
+namespace Recurso.BulkInsert.Sample
 {
     public class Person
     {
