@@ -1,4 +1,5 @@
-﻿using Recurso.BulkInsert.Sample.Common;
+﻿using Microsoft.Extensions.Configuration;
+using Recurso.BulkInsert.Sample.Common;
 using Recurso.BulkInsert.Sample.Common.Interfaces;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,12 +9,13 @@ namespace Recurso.BulkInsert.Sample.DAL
 {
     public class Database : IDatabase
     {
-        public IDbConnectionFactory _dbConnectionFactory { get; set; }
-        public string ConnectionString { get; set; }
+        readonly IDbConnectionFactory _dbConnectionFactory;
+        readonly IBulkInsert _bulkInsert;
 
-        public Database(IDbConnectionFactory dbConnectionFactory)
+        public Database(IDbConnectionFactory dbConnectionFactory, IBulkInsert bulkInsert)
         {
             _dbConnectionFactory = dbConnectionFactory;
+            _bulkInsert = bulkInsert;
         }
 
         public async Task InsertUsingStoredProcedure(List<Person> people)
@@ -25,9 +27,9 @@ namespace Recurso.BulkInsert.Sample.DAL
             }
         }
 
-        private async Task InsertPerson(Person person)
+        public async Task InsertPerson(Person person)
         {
-            using SqlConnection connection = _dbConnectionFactory.CreateConnection(ConnectionString) as SqlConnection;
+            using SqlConnection connection = _dbConnectionFactory.CreateConnection() as SqlConnection;
             connection.Open();
 
             using SqlCommand sqlCommand = new SqlCommand("prc_InsertPerson", connection)
@@ -47,6 +49,11 @@ namespace Recurso.BulkInsert.Sample.DAL
             sqlCommand.Parameters.AddWithValue("@MaritalStatus", person.MaritalStatus);
 
             await sqlCommand.ExecuteScalarAsync();
+        }
+
+        public async Task InsertUsingBulkInsert(List<Person> people)
+        {
+            await _bulkInsert.Save<Person>(people);
         }
     }
 }

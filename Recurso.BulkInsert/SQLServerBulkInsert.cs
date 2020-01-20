@@ -8,21 +8,16 @@ namespace Recurso.BulkInsert
 {
     public class SQLServerBulkInsert : IBulkInsert
     {
-        private readonly IDbConnectionFactory dbConnectionFactory;
-
-        /// <summary>
-        /// Database connection string to be used to bulk insert data
-        /// </summary>
-        public string ConnectionString { get; set; }
-
         /// <summary>
         /// Number of rows in each batch. At the end of each batch, the rows in the batch are sent to the server. Defaulted to 4000.
         /// </summary>
         public int BatchSize { get; set; } = 4000;
 
+        private readonly IDbConnectionFactory _dbConnectionFactory;
+
         public SQLServerBulkInsert(IDbConnectionFactory dbConnectionFactory)
         {
-            this.dbConnectionFactory = dbConnectionFactory;
+            this._dbConnectionFactory = dbConnectionFactory;
         }
 
         /// <summary>
@@ -35,11 +30,6 @@ namespace Recurso.BulkInsert
         /// <returns></returns>
         public async Task<long> Save<T>(List<T> sourceList, string destinationTableName = null, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default)
         {
-            if (string.IsNullOrWhiteSpace(ConnectionString))
-            {
-                throw new ArgumentException("Please set ConnectionString property");
-            }
-
             using var dataTable = sourceList.CopyToDataTable();
 
             return await Save<T>(dataTable, destinationTableName, sqlBulkCopyOptions);
@@ -55,13 +45,10 @@ namespace Recurso.BulkInsert
         /// <returns></returns>
         public async Task<long> Save<T>(DataTable sourceDataTable, string destinationTableName = null, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default)
         {
-            if (string.IsNullOrWhiteSpace(ConnectionString))
-            {
-                throw new ArgumentException("Please set ConnectionString property");
-            }
+            using SqlConnection connection = _dbConnectionFactory.CreateConnection() as SqlConnection;
+            await connection.OpenAsync();
 
-            using SqlConnection connection = dbConnectionFactory.CreateConnection(ConnectionString) as SqlConnection;
-            using SqlTransaction sqlTransaction = await connection.BeginTransactionAsync() as SqlTransaction; 
+            using SqlTransaction sqlTransaction = connection.BeginTransaction() as SqlTransaction; 
 
             using SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(connection, sqlBulkCopyOptions,sqlTransaction)
             {

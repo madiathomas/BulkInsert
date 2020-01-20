@@ -11,15 +11,12 @@ namespace Recurso.BulkInsert.Sample.BLL
     {
         readonly IDatabase _database;
         readonly ICSVFile _csvFile;
-        readonly IBulkInsert _bulkInsert;
 
-        public string ConnectionString { get; set; } 
 
-        public BusinessLogic(IDatabase database, ICSVFile csvFile, IBulkInsert bulkInsert)
+        public BusinessLogic(IDatabase database, ICSVFile csvFile)
         {
             _database = database;
             _csvFile = csvFile;
-            _bulkInsert = bulkInsert;
         }
 
         public async Task InsertUsingStoredProcedure(List<Person> people)
@@ -29,7 +26,7 @@ namespace Recurso.BulkInsert.Sample.BLL
 
         public async Task InsertUsingBulkInsert(List<Person> people)
         {
-            await _bulkInsert.Save(people);
+            await _database.InsertUsingBulkInsert(people);
         }
 
         public List<Person> GetPeople(string fileName)

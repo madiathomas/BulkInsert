@@ -11,11 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recurso.BulkInsert.Tests", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{B4C4AFEA-4F63-4513-B0A6-42A1AD25A568}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recurso.BulkInsert.Sample.DAL", "Recurso.BulkInsert.Sample.DAL\Recurso.BulkInsert.Sample.DAL.csproj", "{901582C1-0F0D-4662-928F-D170D3716994}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recurso.BulkInsert.Sample.DAL", "Recurso.BulkInsert.Sample.DAL\Recurso.BulkInsert.Sample.DAL.csproj", "{901582C1-0F0D-4662-928F-D170D3716994}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recurso.BulkInsert.Sample.BLL", "Recurso.BulkInsert.Sample.BLL\Recurso.BulkInsert.Sample.BLL.csproj", "{AE15E733-6816-408C-AB0B-7F291C2ADC2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recurso.BulkInsert.Sample.BLL", "Recurso.BulkInsert.Sample.BLL\Recurso.BulkInsert.Sample.BLL.csproj", "{AE15E733-6816-408C-AB0B-7F291C2ADC2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recurso.BulkInsert.Sample.Common", "Recurso.BulkInsert.Sample.Common\Recurso.BulkInsert.Sample.Common.csproj", "{606EB54C-63F9-4CDC-9023-7E604C35EAD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recurso.BulkInsert.Sample.Common", "Recurso.BulkInsert.Sample.Common\Recurso.BulkInsert.Sample.Common.csproj", "{606EB54C-63F9-4CDC-9023-7E604C35EAD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
