@@ -17,7 +17,7 @@ namespace Recurso.BulkInsert
         /// <summary>
         /// Number of rows in each batch. At the end of each batch, the rows in the batch are sent to the server. Defaulted to 4000.
         /// </summary>
-        public int BatchSize { get; }
+        public int BatchSize { get; set; }
 
         public SQLServerBulkInsert(string connectionString, int batchSize = 4000)
         {
@@ -62,6 +62,7 @@ namespace Recurso.BulkInsert
 
             using SqlBulkCopy bulkCopy = new SqlBulkCopy(this.ConnectionString, sqlBulkCopyOptions)
             {
+                BatchSize = this.BatchSize,
                 DestinationTableName = destinationTableName ?? sourceDataTable.TableName ?? typeof(T).Name
             };
 
