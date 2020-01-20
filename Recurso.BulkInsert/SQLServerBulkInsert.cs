@@ -13,10 +13,12 @@ namespace Recurso.BulkInsert
         /// Database connection string to be used to bulk insert data
         /// </summary>
         public string ConnectionString { get; set; }
+        public int BatchSize { get; }
 
-        public SQLServerBulkInsert(string connectionString)
+        public SQLServerBulkInsert(string connectionString, int batchSize = 4000)
         {
             ConnectionString = connectionString;
+            BatchSize = batchSize;
         }
 
         /// <summary>
