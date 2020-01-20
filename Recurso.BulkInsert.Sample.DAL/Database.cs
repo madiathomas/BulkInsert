@@ -1,23 +1,33 @@
-﻿using System;
+﻿using Recurso.BulkInsert.Sample.Common;
+using Recurso.BulkInsert.Sample.Common.Interfaces;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Recurso.BulkInsert.Sample
+namespace Recurso.BulkInsert.Sample.DAL
 {
-    public class Database
+    public class Database : IDatabase
     {
-        public Database(string connectionString)
+        public IDbConnectionFactory _dbConnectionFactory { get; set; }
+        public string ConnectionString { get; set; }
+
+        public Database(IDbConnectionFactory dbConnectionFactory)
         {
-            ConnectionString = connectionString;
+            _dbConnectionFactory = dbConnectionFactory;
         }
 
-        public string ConnectionString { get; }
-
-        public async Task InsertPerson(Person person)
+        public async Task InsertUsingStoredProcedure(List<Person> people)
         {
-            using SqlConnection connection = new SqlConnection(ConnectionString);
+            // Insert data
+            foreach (var person in people)
+            {
+                await InsertPerson(person);
+            }
+        }
+
+        private async Task InsertPerson(Person person)
+        {
+            using SqlConnection connection = _dbConnectionFactory.CreateConnection(ConnectionString) as SqlConnection;
             connection.Open();
 
             using SqlCommand sqlCommand = new SqlCommand("prc_InsertPerson", connection)

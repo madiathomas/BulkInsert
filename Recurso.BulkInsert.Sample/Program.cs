@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Autofac;
+using Recurso.BulkInsert.Sample.BLL;
+using Recurso.BulkInsert.Sample.Common;
+using Recurso.BulkInsert.Sample.Common.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,27 +17,19 @@ namespace Recurso.BulkInsert.Sample
 
         static async Task Main(string[] args)
         {
+            var container = ContainerConfiguration.Configure();
+            var businessLogic = container.Resolve<IBusinessLogic>();
+
             try
             {
-              /*
-               * * Spreadsheet contains 10,000 records.I am using 1000 records for this demo.
-               * The more records you use, the more BulkInsert is noticeable faster
-               * Adding more data only adds few milliseconds to bulk insert but way more for individual inserts
-               * Difference between stored procedure and bulk insert was 15 seconds for 1000 records
-               * For 10, 000 records, difference was too big.For bulk insert, it was just 2 seconds
-               * Individual inserts took more than 149 seconds for 10,000 records
-             */
-
-              int numberOfRecords = 1000;
+                int numberOfRecords = 1000;
 
                 // Load list of people from a file
-                List<Person> people = CSVHelper.GetPeople(fileName: "People.csv").Take(numberOfRecords).ToList();
+                List<Person> people = businessLogic.GetPeople(fileName: "People.csv").Take(numberOfRecords).ToList();
 
-                await InsertUsingBulkInsert(people);
-                await InsertUsingStoredProcedure(people);
+                await InsertUsingBulkInsert(businessLogic, people);
 
-                Console.WriteLine("Press any key to continue...");
-                Console.ReadKey();
+                await InsertUsingStoredProcedure(businessLogic, people);
             }
             catch (Exception ex)
             {
@@ -41,10 +37,8 @@ namespace Recurso.BulkInsert.Sample
             }
         }
 
-        private static async Task InsertUsingStoredProcedure(List<Person> people)
+        private static async Task InsertUsingBulkInsert(IBusinessLogic businessLogic, List<Person> people)
         {
-            var database = new Database(connectionString);
-
             Console.WriteLine($"Inserting {people.Count} records individually...");
 
             // Use stop watch to determine how fast the update was
@@ -53,10 +47,7 @@ namespace Recurso.BulkInsert.Sample
             stopWatch.Start();
 
             // Insert data
-            foreach (var person in people)
-            {
-                await database.InsertPerson(person);
-            }
+            await businessLogic.InsertUsingBulkInsert(people);
 
             // Stop the timer
             stopWatch.Stop();
@@ -65,29 +56,23 @@ namespace Recurso.BulkInsert.Sample
             Console.WriteLine($"Time Elapsed inserting records individually: {stopWatch.Elapsed.TotalSeconds}\n");
         }
 
-        private static async Task InsertUsingBulkInsert(List<Person> people)
+        private static async Task InsertUsingStoredProcedure(IBusinessLogic businessLogic, List<Person> people)
         {
-            // Innitialise BulkInsert object
-            var bulkInsert = new SQLServerBulkInsert()
-            {
-                ConnectionString = connectionString
-            };
-
-            Console.WriteLine($"Inserting {people.Count} records using BulkInsert...");
+            Console.WriteLine($"Inserting {people.Count} records individually...");
 
             // Use stop watch to determine how fast the update was
             var stopWatch = new Stopwatch();
 
             stopWatch.Start();
 
-            // Bulk Insert data to the database
-            await bulkInsert.Save<Person>(people);
+            // Insert data
+            await businessLogic.InsertUsingStoredProcedure(people);
 
             // Stop the timer
             stopWatch.Stop();
 
             // Display time elapsed
-            Console.WriteLine($"Time Elapsed using BulkInsert: {stopWatch.Elapsed.TotalSeconds}\n");
+            Console.WriteLine($"Time Elapsed inserting records individually: {stopWatch.Elapsed.TotalSeconds}\n");
         }
     }
 }

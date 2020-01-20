@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 
 namespace Recurso.BulkInsert
 {
@@ -22,12 +23,15 @@ namespace Recurso.BulkInsert
             // Get properties and sort them by metadatatoken to preserve their order. If it is in an incorrect order, bulk insert will fail.
             var properties = typeof(T).GetProperties().OrderBy(_ => _.MetadataToken);
 
-            // Add colums to the dataTable
-            foreach (var prop in properties)
-            {
-                dataTable.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
-            }
+            dataTable.AddColumns(properties);
 
+            dataTable.AddValues(data, properties);
+
+            return dataTable;
+        }
+
+        private static void AddValues<T>(this DataTable dataTable, List<T> data, IOrderedEnumerable<PropertyInfo> properties)
+        {
             // Add values to the dataTable
             foreach (T item in data)
             {
@@ -40,8 +44,15 @@ namespace Recurso.BulkInsert
 
                 dataTable.Rows.Add(row);
             }
+        }
 
-            return dataTable;
+        private static void AddColumns(this DataTable dataTable, IOrderedEnumerable<PropertyInfo> properties)
+        {
+            // Add colums to the dataTable
+            foreach (var prop in properties)
+            {
+                dataTable.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+            }
         }
 
         public static void AddColumnMappings(this DataTable dataTable, SqlBulkCopy sqlBulkCopy)

@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using Recurso.BulkInsert.Sample.Common;
+using Recurso.BulkInsert.Sample.Common.Interfaces;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Recurso.BulkInsert.Sample
+namespace Recurso.BulkInsert.Sample.DAL
 {
-    public class CSVHelper
+
+    public class CSVFile: ICSVFile
     {
-        public static List<Person> GetPeople(string fileName)
+        public List<Person> GetPeople(string fileName)
         {
             var people = File.ReadAllLines(fileName)
                             .Skip(1)

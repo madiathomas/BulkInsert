@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Recurso.BulkInsert.Sample.Common\Recurso.BulkInsert.Sample.Common.csproj" />
+    <ProjectReference Include="..\Recurso.BulkInsert.Sample.DAL\Recurso.BulkInsert.Sample.DAL.csproj" />
+    <ProjectReference Include="..\Recurso.BulkInsert\Recurso.BulkInsert.csproj" />
+  </ItemGroup>
+
+</Project>
