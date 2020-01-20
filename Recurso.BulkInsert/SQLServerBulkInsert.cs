@@ -13,6 +13,10 @@ namespace Recurso.BulkInsert
         /// Database connection string to be used to bulk insert data
         /// </summary>
         public string ConnectionString { get; set; }
+
+        /// <summary>
+        /// Number of rows in each batch. At the end of each batch, the rows in the batch are sent to the server. Defaulted to 4000.
+        /// </summary>
         public int BatchSize { get; }
 
         public SQLServerBulkInsert(string connectionString, int batchSize = 4000)
