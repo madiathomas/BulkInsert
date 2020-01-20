@@ -9,11 +9,12 @@
     <PackageIcon>recurso 400 x 400.png</PackageIcon>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/madiathomas/Recurso.BulkInsert</RepositoryUrl>
-    <PackageTags>Bulk Insert, Bulk Save, List to Datatable, Datatable</PackageTags>
-    <PackageReleaseNotes>Add BatchSize property. Set to a recommended value of 4000</PackageReleaseNotes>
+    <PackageTags>Bulk Insert, Bulk Save, Bulk Insert List to SQL Database, Insert Datatable to SQL database</PackageTags>
+    <PackageReleaseNotes>- Add BatchSize property. Set to a recommended value of 4000
+- Removed constructor</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <PackageId>Recurso.BulkInsert</PackageId>
   </PropertyGroup>
 

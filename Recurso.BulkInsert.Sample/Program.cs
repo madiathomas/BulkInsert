@@ -68,7 +68,10 @@ namespace Recurso.BulkInsert.Sample
         private static async Task InsertUsingBulkInsert(List<Person> people)
         {
             // Innitialise BulkInsert object
-            var bulkInsert = new SQLServerBulkInsert(connectionString);
+            var bulkInsert = new SQLServerBulkInsert()
+            {
+                ConnectionString = connectionString
+            };
 
             Console.WriteLine($"Inserting {people.Count} records using BulkInsert...");
 
