@@ -10,10 +10,10 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/madiathomas/Recurso.BulkInsert</RepositoryUrl>
     <PackageTags>Bulk Insert, Bulk Save, List to Datatable, Datatable</PackageTags>
-    <PackageReleaseNotes>Added nuget package</PackageReleaseNotes>
+    <PackageReleaseNotes>Add BatchSize property. Set to a recommended value of 4000</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <PackageId>Recurso.BulkInsert</PackageId>
   </PropertyGroup>
 
