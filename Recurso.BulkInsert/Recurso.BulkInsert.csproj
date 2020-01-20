@@ -13,7 +13,7 @@
     <PackageReleaseNotes>Add BatchSize property. Set to a recommended value of 4000</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <PackageId>Recurso.BulkInsert</PackageId>
   </PropertyGroup>
 
