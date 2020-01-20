@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Recurso.BulkInsert
@@ -41,6 +42,14 @@ namespace Recurso.BulkInsert
             }
 
             return dataTable;
+        }
+
+        public static void AddColumnMappings(this DataTable dataTable, SqlBulkCopy sqlBulkCopy)
+        {
+            foreach (DataColumn column in dataTable.Columns)
+            {
+                sqlBulkCopy.ColumnMappings.Add(column.ColumnName, column.ColumnName);
+            }
         }
     }
 }

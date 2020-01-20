@@ -60,13 +60,15 @@ namespace Recurso.BulkInsert
                 throw new Exception("Please set ConnectionString property");
             }
 
-            using SqlBulkCopy bulkCopy = new SqlBulkCopy(this.ConnectionString, sqlBulkCopyOptions)
+            using SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(this.ConnectionString, sqlBulkCopyOptions)
             {
                 BatchSize = this.BatchSize,
                 DestinationTableName = destinationTableName ?? sourceDataTable.TableName ?? typeof(T).Name
             };
 
-            await bulkCopy.WriteToServerAsync(sourceDataTable);
+            sourceDataTable.AddColumnMappings(sqlBulkCopy);
+
+            await sqlBulkCopy.WriteToServerAsync(sourceDataTable);
         }
     }
 }
