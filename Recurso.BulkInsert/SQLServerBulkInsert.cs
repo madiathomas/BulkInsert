@@ -28,11 +28,11 @@ namespace Recurso.BulkInsert
         /// <param name="destinationTableName">Name of the database table you want to bulk insert this data. If destinationTableName isn't supplied, it will use name of T as Table name.</param>
         /// <param name="sqlBulkCopyOptions">Bitwise flag that specifies one or more options to use with an instance of SqlBulkCopy.</param>
         /// <returns></returns>
-        public async Task<long> Save<T>(List<T> sourceList, string destinationTableName = null, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default)
+        public async Task Save<T>(List<T> sourceList, string destinationTableName = null, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default)
         {
             using var dataTable = sourceList.CopyToDataTable();
 
-            return await Save<T>(dataTable, destinationTableName, sqlBulkCopyOptions);
+            await Save<T>(dataTable, destinationTableName, sqlBulkCopyOptions);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Recurso.BulkInsert
         /// <param name="destinationTableName">Name of the database table you want to bulk insert this data. If destinationTableName isn't supplied, it will use name of T as Table name.</param>
         /// <param name="sqlBulkCopyOptions">Bitwise flag that specifies one or more options to use with an instance of SqlBulkCopy</param>
         /// <returns></returns>
-        public async Task<long> Save<T>(DataTable sourceDataTable, string destinationTableName = null, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default)
+        public async Task Save<T>(DataTable sourceDataTable, string destinationTableName = null, SqlBulkCopyOptions sqlBulkCopyOptions = SqlBulkCopyOptions.Default)
         {
             using SqlConnection connection = _dbConnectionFactory.CreateConnection() as SqlConnection;
             await connection.OpenAsync();
@@ -58,14 +58,7 @@ namespace Recurso.BulkInsert
 
             sourceDataTable.AddColumnMappings(sqlBulkCopy);
 
-            long rowsInserted = 0;
-
-            sqlBulkCopy.NotifyAfter = sourceDataTable.Rows.Count;
-            sqlBulkCopy.SqlRowsCopied += (s, e) => rowsInserted = e.RowsCopied;
-
             await sqlBulkCopy.WriteToServerAsync(sourceDataTable);
-
-            return rowsInserted;
         }
     }
 }

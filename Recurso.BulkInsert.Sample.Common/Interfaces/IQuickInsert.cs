@@ -6,8 +6,8 @@ namespace Recurso.BulkInsert.Sample.Common.Interfaces
 {
     public interface IQuickInsert
     {
-        Task<long> InsertUsingBulkInsert(List<Person> people);
+        Task<int> InsertUsingBulkInsert(List<Person> people);
 
-        Task<long> InsertUsingBulkInsert(DataTable dataTable);
+        Task<int> InsertUsingBulkInsert(DataTable dataTable);
     }
 }

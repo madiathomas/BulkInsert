@@ -17,14 +17,18 @@ namespace Recurso.BulkInsert.Sample.DAL
             _bulkInsert = bulkInsert;
         }
 
-        public async Task<long> InsertUsingBulkInsert(DataTable dataTable)
+        public async Task<int> InsertUsingBulkInsert(DataTable dataTable)
         {
-            return await _bulkInsert.Save<Person>(dataTable);
+            await _bulkInsert.Save<Person>(dataTable);
+
+            return dataTable.Rows.Count;
         }
 
-        public async Task<long> InsertUsingBulkInsert(List<Person> people)
+        public async Task<int> InsertUsingBulkInsert(List<Person> people)
         {
-            return await _bulkInsert.Save<Person>(people);
+            await _bulkInsert.Save<Person>(people);
+
+            return people.Count;
         }
     }
 }

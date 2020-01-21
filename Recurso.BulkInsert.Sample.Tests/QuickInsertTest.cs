@@ -3,6 +3,7 @@ using Moq;
 using Recurso.BulkInsert.Sample.Common;
 using Recurso.BulkInsert.Sample.DAL;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Recurso.BulkInsert.Sample.Tests
 {
@@ -20,31 +21,23 @@ namespace Recurso.BulkInsert.Sample.Tests
         }
 
         [TestMethod]
-        public async void QuickInsert_InsertListUsingBulkInsert()
+        public async Task QuickInsert_InsertListUsingBulkInsert()
         {
             //Arrange
-            var mock = new MockRepository(MockBehavior.Default);
-
-            var  bulkInsert = mock.OneOf<IBulkInsert>();
-
-            var quickInsert = new QuickInsert(bulkInsert);
+            QuickInsert quickInsert = MockQuickInsert();
 
             // Act
             long result = await quickInsert.InsertUsingBulkInsert(people);
 
             //Assert
-            Assert.AreNotEqual(0, result);
+            Assert.AreEqual(people.Count, result);
         }
 
         [TestMethod]
-        public async void QuickInsert_InsertDataTableUsingBulkInsert()
+        public async Task QuickInsert_InsertDataTableUsingBulkInsert()
         {
             //Arrange
-            var mock = new MockRepository(MockBehavior.Default);
-
-            var bulkInsert = mock.OneOf<IBulkInsert>();
-
-            var quickInsert = new QuickInsert(bulkInsert);
+            QuickInsert quickInsert = MockQuickInsert();
 
             var dataTable = people.CopyToDataTable();
 
@@ -52,7 +45,17 @@ namespace Recurso.BulkInsert.Sample.Tests
             long result = await quickInsert.InsertUsingBulkInsert(dataTable);
 
             //Assert
-            Assert.AreNotEqual(0, result);
+            Assert.AreEqual(dataTable.Rows.Count, result);
+        }
+
+        private static QuickInsert MockQuickInsert()
+        {
+            var mock = new MockRepository(MockBehavior.Default);
+
+            var bulkInsert = mock.OneOf<IBulkInsert>();
+
+            var quickInsert = new QuickInsert(bulkInsert);
+            return quickInsert;
         }
     }
 }
