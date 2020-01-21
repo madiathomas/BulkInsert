@@ -10,10 +10,10 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/madiathomas/Recurso.BulkInsert</RepositoryUrl>
     <PackageTags>Bulk Insert, Bulk Save, Bulk Insert List to SQL Database, Insert Datatable to SQL database</PackageTags>
-    <PackageReleaseNotes>Make Improve testability of the library</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <PackageId>Recurso.BulkInsert</PackageId>
   </PropertyGroup>
 

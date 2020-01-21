@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Recurso.BulkInsert.Sample.Common;
 using Recurso.BulkInsert.Sample.Common.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
@@ -10,50 +12,40 @@ namespace Recurso.BulkInsert.Sample.DAL
     public class Database : IDatabase
     {
         readonly IDbConnectionFactory _dbConnectionFactory;
-        readonly IBulkInsert _bulkInsert;
 
-        public Database(IDbConnectionFactory dbConnectionFactory, IBulkInsert bulkInsert)
+        public Database(IDbConnectionFactory dbConnectionFactory)
         {
             _dbConnectionFactory = dbConnectionFactory;
-            _bulkInsert = bulkInsert;
         }
 
-        public async Task InsertUsingStoredProcedure(List<Person> people)
+        public async Task<int> InsertUsingStoredProcedure(List<Person> people)
         {
             // Insert data
             foreach (var person in people)
             {
-                await InsertPerson(person);
+                InsertPerson(person);
             }
+
+            return people.Count;
         }
 
-        public async Task InsertPerson(Person person)
+        private void InsertPerson(Person person)
         {
-            using SqlConnection connection = _dbConnectionFactory.CreateConnection() as SqlConnection;
+            using IDbConnection connection = _dbConnectionFactory.CreateConnection();
             connection.Open();
 
-            using SqlCommand sqlCommand = new SqlCommand("prc_InsertPerson", connection)
+            using IDbCommand command = connection.CreateCommand();
+            command.CommandText = "prc_InsertPerson";
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+
+            foreach(var prop in typeof(Person).GetProperties())
             {
-                CommandType = System.Data.CommandType.StoredProcedure
-            };
+                var parameter = command.CreateParameter();
+                parameter.ParameterName = prop.Name;
+                parameter.Value = prop.GetValue(person) ?? DBNull.Value;                
+            }
 
-            sqlCommand.Parameters.AddWithValue("@FirstName", person.MaritalStatus);
-            sqlCommand.Parameters.AddWithValue("@LastName", person.MaritalStatus);
-            sqlCommand.Parameters.AddWithValue("@Gender", person.MaritalStatus);
-            sqlCommand.Parameters.AddWithValue("@Age", person.MaritalStatus);
-            sqlCommand.Parameters.AddWithValue("@Email", person.MaritalStatus);
-            sqlCommand.Parameters.AddWithValue("@Phone", person.MaritalStatus);
-            sqlCommand.Parameters.AddWithValue("@Education", person.MaritalStatus);
-            sqlCommand.Parameters.AddWithValue("@Occupation", person.MaritalStatus);
-            sqlCommand.Parameters.AddWithValue("@Experience", person.MaritalStatus);
-            sqlCommand.Parameters.AddWithValue("@MaritalStatus", person.MaritalStatus);
-
-            await sqlCommand.ExecuteScalarAsync();
-        }
-
-        public async Task InsertUsingBulkInsert(List<Person> people)
-        {
-            await _bulkInsert.Save<Person>(people);
+            command.ExecuteScalar();
         }
     }
 }

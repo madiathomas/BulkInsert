@@ -10,13 +10,15 @@ namespace Recurso.BulkInsert.Sample.BLL
     public class BusinessLogic : IBusinessLogic
     {
         readonly IDatabase _database;
+        readonly IQuickInsert _quickInsert;
         readonly ICSVFile _csvFile;
 
 
-        public BusinessLogic(IDatabase database, ICSVFile csvFile)
+        public BusinessLogic(IDatabase database, ICSVFile csvFile, IQuickInsert quickInsert)
         {
             _database = database;
             _csvFile = csvFile;
+            _quickInsert = quickInsert;
         }
 
         public async Task InsertUsingStoredProcedure(List<Person> people)
@@ -26,7 +28,7 @@ namespace Recurso.BulkInsert.Sample.BLL
 
         public async Task InsertUsingBulkInsert(List<Person> people)
         {
-            await _database.InsertUsingBulkInsert(people);
+            await _quickInsert.InsertUsingBulkInsert(people);
         }
 
         public List<Person> GetPeople(string fileName)

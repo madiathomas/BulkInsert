@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recurso.BulkInsert.Sample.B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recurso.BulkInsert.Sample.Common", "Recurso.BulkInsert.Sample.Common\Recurso.BulkInsert.Sample.Common.csproj", "{606EB54C-63F9-4CDC-9023-7E604C35EAD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recurso.BulkInsert.Sample.Tests", "Recurso.BulkInsert.Sample.Tests\Recurso.BulkInsert.Sample.Tests.csproj", "{2568EF93-CFDB-4173-BA7F-207A04DE27B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{606EB54C-63F9-4CDC-9023-7E604C35EAD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{606EB54C-63F9-4CDC-9023-7E604C35EAD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{606EB54C-63F9-4CDC-9023-7E604C35EAD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2568EF93-CFDB-4173-BA7F-207A04DE27B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2568EF93-CFDB-4173-BA7F-207A04DE27B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2568EF93-CFDB-4173-BA7F-207A04DE27B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2568EF93-CFDB-4173-BA7F-207A04DE27B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{901582C1-0F0D-4662-928F-D170D3716994} = {B4C4AFEA-4F63-4513-B0A6-42A1AD25A568}
 		{AE15E733-6816-408C-AB0B-7F291C2ADC2D} = {B4C4AFEA-4F63-4513-B0A6-42A1AD25A568}
 		{606EB54C-63F9-4CDC-9023-7E604C35EAD0} = {B4C4AFEA-4F63-4513-B0A6-42A1AD25A568}
+		{2568EF93-CFDB-4173-BA7F-207A04DE27B1} = {B4C4AFEA-4F63-4513-B0A6-42A1AD25A568}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E880DFA3-9AAA-42F0-BF1D-885E02C97FD8}
