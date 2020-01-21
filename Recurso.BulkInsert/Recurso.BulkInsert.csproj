@@ -10,8 +10,7 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/madiathomas/Recurso.BulkInsert</RepositoryUrl>
     <PackageTags>Bulk Insert, Bulk Save, Bulk Insert List to SQL Database, Insert Datatable to SQL database</PackageTags>
-    <PackageReleaseNotes>- Add BatchSize property. Set to a recommended value of 4000
-- Removed constructor</PackageReleaseNotes>
+    <PackageReleaseNotes>Make Improve testability of the library</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Version>2.0.0</Version>

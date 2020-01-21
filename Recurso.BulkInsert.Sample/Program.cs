@@ -13,10 +13,10 @@ namespace Recurso.BulkInsert.Sample
 {
     class Program
     {
-        // Run CreatePeopleDatabase.sql to create this database and table on your local machine
+        // Run CreatePeopleDatabase.sql, which is under Recurso.BulkInsert.Sample.DAL project, to create the database and table required for this sample
         static IBusinessLogic businessLogic;
 
-        static async Task Main(string[] args)
+        static async Task Main()
         {
             var container = ContainerConfiguration.Configure();
            
