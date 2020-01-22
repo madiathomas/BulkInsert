@@ -17,9 +17,9 @@ namespace Recurso.BulkInsert.Sample.Tests
         [TestInitialize]
         public void Setup()
         {
-            people.Add(new Person { FirstName = "James", LastName = "La Chapman", Gender = "Male", Age = "22", Email = "j.chapman @randatmail.com", Phone = "646-3513-39", Education = "Bachelors", Occupation = "Electrician", Experience = "15", MaritalStatus = "Married" });
-            people.Add(new Person { FirstName = "Peter", LastName = "La Chapman", Gender = "Male", Age = "24", Email = "p.chapman @randatmail.com", Phone = "646-3513-39", Education = "Master", Occupation = "Programmer", Experience = "5", MaritalStatus = "Single" });
-            people.Add(new Person { FirstName = "Lance", LastName = "La Chapman", Gender = "Male", Age = "26", Email = "l.chapman @randatmail.com", Phone = "646-3513-39", Education = "PhD", Occupation = "Professor", Experience = "20", MaritalStatus = "Divorced" });
+            people.Add(new Person { FirstName = "James", LastName = "La Chapman", Gender = "Male", Age = "22", Email = "j.chapman@example.com", Phone = "646-3513-37", Education = "Bachelors", Occupation = "Electrician", Experience = "15", MaritalStatus = "Married" });
+            people.Add(new Person { FirstName = "Peter", LastName = "La Chapman", Gender = "Male", Age = "24", Email = "p.chapman@example.com", Phone = "646-3513-38", Education = "Master", Occupation = "Programmer", Experience = "5", MaritalStatus = "Single" });
+            people.Add(new Person { FirstName = "Lance", LastName = "La Chapman", Gender = "Male", Age = "26", Email = "l.chapman@example.com", Phone = "646-3513-39", Education = "PhD", Occupation = "Professor", Experience = "20", MaritalStatus = "Divorced" });
         }
 
         [TestMethod]
