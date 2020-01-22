@@ -48,9 +48,7 @@ namespace Recurso.BulkInsert
             using SqlConnection connection = _dbConnectionFactory.CreateConnection() as SqlConnection;
             await connection.OpenAsync();
 
-            using SqlTransaction sqlTransaction = connection.BeginTransaction() as SqlTransaction; 
-
-            using SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(connection, sqlBulkCopyOptions,sqlTransaction)
+            using SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(connection, sqlBulkCopyOptions, null)
             {
                 BatchSize = this.BatchSize,
                 DestinationTableName = destinationTableName ?? sourceDataTable.TableName ?? typeof(T).Name,
@@ -59,8 +57,6 @@ namespace Recurso.BulkInsert
             sourceDataTable.AddColumnMappings(sqlBulkCopy);
 
             await sqlBulkCopy.WriteToServerAsync(sourceDataTable);
-
-            await sqlTransaction.CommitAsync();
         }
     }
 }

@@ -13,7 +13,7 @@
     <PackageReleaseNotes>Fixed commiting issue</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>2.0.3</Version>
+    <Version>2.0.4</Version>
     <PackageId>Recurso.BulkInsert</PackageId>
   </PropertyGroup>
 
