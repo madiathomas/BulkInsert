@@ -3,6 +3,7 @@ using Moq;
 using Recurso.BulkInsert.Sample.Common;
 using Recurso.BulkInsert.Sample.Common.Interfaces;
 using Recurso.BulkInsert.Sample.DAL;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
@@ -26,14 +27,20 @@ namespace Recurso.BulkInsert.Sample.Tests
         public async Task Database_InsertUsingStoredProcedure_Test()
         {
             //Arrange
-            var mock = new MockRepository(MockBehavior.Default);
+            var list = new ArrayList(); // ArrayList more closely matches IDataParameterCollection.
 
-            var parameter = mock.OneOf<IDbDataParameter>();            
-            var command = mock.OneOf<IDbCommand>(_=>_.CreateParameter() == parameter);
-            var connection = mock.OneOf<IDbConnection>(_ => _.CreateCommand() == command);
-            var factory = mock.OneOf<IDbConnectionFactory>(_ => _.CreateConnection() == connection);
+            var parameterMock = new Mock<IDbDataParameter>();
+            var parametersMock = new Mock<IDataParameterCollection>();
+            var commandMock = new Mock<IDbCommand>();
+            var connectionMock = new Mock<IDbConnection>();
+            var iDbConnectionFactoryMock = new Mock<IDbConnectionFactory>();
 
-            var database = new Database(factory);
+            commandMock.Setup(_ => _.CreateParameter()).Returns(parameterMock.Object);
+            commandMock.Setup(_ => _.Parameters.Add(parameterMock.Object));
+            connectionMock.Setup(_ => _.CreateCommand()).Returns(commandMock.Object);
+            iDbConnectionFactoryMock.Setup(_ => _.CreateConnection()).Returns(connectionMock.Object);
+
+            var database = new Database(iDbConnectionFactoryMock.Object);
 
             // Act
             int rowsAffected = await database.InsertUsingStoredProcedure(people);

@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recurso.BulkInsert.Sample.B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recurso.BulkInsert.Sample.Common", "Recurso.BulkInsert.Sample.Common\Recurso.BulkInsert.Sample.Common.csproj", "{606EB54C-63F9-4CDC-9023-7E604C35EAD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recurso.BulkInsert.Sample.Tests", "Recurso.BulkInsert.Sample.Tests\Recurso.BulkInsert.Sample.Tests.csproj", "{2568EF93-CFDB-4173-BA7F-207A04DE27B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recurso.BulkInsert.Sample.Tests", "Recurso.BulkInsert.Sample.Tests\Recurso.BulkInsert.Sample.Tests.csproj", "{2568EF93-CFDB-4173-BA7F-207A04DE27B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

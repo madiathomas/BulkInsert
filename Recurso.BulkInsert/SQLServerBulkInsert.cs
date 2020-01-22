@@ -59,6 +59,8 @@ namespace Recurso.BulkInsert
             sourceDataTable.AddColumnMappings(sqlBulkCopy);
 
             await sqlBulkCopy.WriteToServerAsync(sourceDataTable);
+
+            await sqlTransaction.CommitAsync();
         }
     }
 }

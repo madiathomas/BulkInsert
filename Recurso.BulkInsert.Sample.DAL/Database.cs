@@ -38,11 +38,14 @@ namespace Recurso.BulkInsert.Sample.DAL
             command.CommandText = "prc_InsertPerson";
             command.CommandType = System.Data.CommandType.StoredProcedure;
 
+            // Add properties and their values
             foreach(var prop in typeof(Person).GetProperties())
             {
                 var parameter = command.CreateParameter();
                 parameter.ParameterName = prop.Name;
-                parameter.Value = prop.GetValue(person) ?? DBNull.Value;                
+                parameter.Value = prop.GetValue(person) ?? DBNull.Value;
+
+                command.Parameters.Add(parameter);
             }
 
             command.ExecuteScalar();
