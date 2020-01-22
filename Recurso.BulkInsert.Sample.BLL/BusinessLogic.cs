@@ -21,9 +21,9 @@ namespace Recurso.BulkInsert.Sample.BLL
             _quickInsert = quickInsert;
         }
 
-        public async Task InsertUsingStoredProcedure(List<Person> people)
+        public int InsertUsingStoredProcedure(List<Person> people)
         {
-            await _database.InsertUsingStoredProcedure(people);
+            return _database.InsertUsingStoredProcedure(people);
         }
 
         public async Task InsertUsingBulkInsert(List<Person> people)

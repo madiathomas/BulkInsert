@@ -8,6 +8,6 @@ namespace Recurso.BulkInsert.Sample.Common.Interfaces
     {
         List<Person> GetPeople(string fileName);
         Task InsertUsingBulkInsert(List<Person> people);
-        Task InsertUsingStoredProcedure(List<Person> people);
+        int InsertUsingStoredProcedure(List<Person> people);
     }
 }

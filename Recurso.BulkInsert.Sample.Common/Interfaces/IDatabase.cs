@@ -5,7 +5,7 @@ namespace Recurso.BulkInsert.Sample.Common.Interfaces
 {
     public interface IDatabase
     {
-        Task<int> InsertUsingStoredProcedure(List<Person> people);
+        int InsertUsingStoredProcedure(List<Person> people);
 
     }
 }

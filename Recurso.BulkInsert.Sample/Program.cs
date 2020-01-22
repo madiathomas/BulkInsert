@@ -31,7 +31,7 @@ namespace Recurso.BulkInsert.Sample
 
                 await InsertUsingBulkInsert(people);
 
-                await InsertUsingStoredProcedure(people);
+                InsertUsingStoredProcedure(people);
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace Recurso.BulkInsert.Sample
             Console.WriteLine($"Time Elapsed inserting records individually: {stopWatch.Elapsed.TotalSeconds}\n");
         }
 
-        private static async Task InsertUsingStoredProcedure(List<Person> people)
+        private static void InsertUsingStoredProcedure(List<Person> people)
         {
             Console.WriteLine($"Inserting {people.Count} records individually...");
 
@@ -68,7 +68,7 @@ namespace Recurso.BulkInsert.Sample
             stopWatch.Start();
 
             // Insert data
-            await businessLogic.InsertUsingStoredProcedure(people);
+            businessLogic.InsertUsingStoredProcedure(people);
 
             // Stop the timer
             stopWatch.Stop();

@@ -43,7 +43,7 @@ namespace Recurso.BulkInsert.Sample.Tests
             var database = new Database(iDbConnectionFactoryMock.Object);
 
             // Act
-            int rowsAffected = await database.InsertUsingStoredProcedure(people);
+            int rowsAffected = database.InsertUsingStoredProcedure(people);
 
             // Assert
             Assert.AreEqual(rowsAffected, people.Count);

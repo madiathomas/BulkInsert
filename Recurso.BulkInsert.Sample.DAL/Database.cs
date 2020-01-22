@@ -18,7 +18,7 @@ namespace Recurso.BulkInsert.Sample.DAL
             _dbConnectionFactory = dbConnectionFactory;
         }
 
-        public async Task<int> InsertUsingStoredProcedure(List<Person> people)
+        public int InsertUsingStoredProcedure(List<Person> people)
         {
             // Insert data
             foreach (var person in people)
