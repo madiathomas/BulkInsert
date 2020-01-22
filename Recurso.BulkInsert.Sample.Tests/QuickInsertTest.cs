@@ -24,7 +24,8 @@ namespace Recurso.BulkInsert.Sample.Tests
         public async Task QuickInsert_InsertListUsingBulkInsert()
         {
             //Arrange
-            QuickInsert quickInsert = MockQuickInsert();
+            var bulkInsertMock = new Mock<IBulkInsert>();
+            QuickInsert quickInsert = new QuickInsert(bulkInsertMock.Object);
 
             // Act
             long result = await quickInsert.InsertUsingBulkInsert(people);
@@ -37,7 +38,8 @@ namespace Recurso.BulkInsert.Sample.Tests
         public async Task QuickInsert_InsertDataTableUsingBulkInsert()
         {
             //Arrange
-            QuickInsert quickInsert = MockQuickInsert();
+            var bulkInsertMock = new Mock<IBulkInsert>();
+            QuickInsert quickInsert = new QuickInsert(bulkInsertMock.Object);
 
             var dataTable = people.CopyToDataTable();
 
@@ -46,16 +48,6 @@ namespace Recurso.BulkInsert.Sample.Tests
 
             //Assert
             Assert.AreEqual(dataTable.Rows.Count, result);
-        }
-
-        private static QuickInsert MockQuickInsert()
-        {
-            var mock = new MockRepository(MockBehavior.Default);
-
-            var bulkInsert = mock.OneOf<IBulkInsert>();
-
-            var quickInsert = new QuickInsert(bulkInsert);
-            return quickInsert;
         }
     }
 }
