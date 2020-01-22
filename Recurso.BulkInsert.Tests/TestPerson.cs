@@ -2,25 +2,25 @@
 
 namespace Recurso.BulkInsert.Tests
 {
-    public class Person
+    public class TestPerson
     {
         public string Name { get; set; }
         public string Surname { get; set; }
 
-        public static List<Person> GetTestList()
+        public static List<TestPerson> GetTestList()
         {
-            return new List<Person>()
+            return new List<TestPerson>()
             {
-                new Person
+                new TestPerson
                 {
                     Name="John",
                     Surname="Smith" },
-                new Person
+                new TestPerson
                 {
                     Name="Keegan",
                     Surname="Smith"
                 },
-                new Person
+                new TestPerson
                 {
                     Name="Kelly",
                     Surname="Smith"
