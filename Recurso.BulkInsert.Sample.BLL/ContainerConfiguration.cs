@@ -19,6 +19,7 @@ namespace Recurso.BulkInsert.Sample.BLL
             builder.RegisterType<Database>().As<IDatabase>();
             builder.RegisterType<SQLServerBulkInsert>().As<IBulkInsert>();
             builder.RegisterType<BusinessLogic>().As<IBusinessLogic>();
+            builder.RegisterType<Application>().As<IApplication>();
 
             return builder.Build();
         }

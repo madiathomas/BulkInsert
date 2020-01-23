@@ -19,62 +19,12 @@ namespace Recurso.BulkInsert.Sample
         static async Task Main()
         {
             var container = ContainerConfiguration.Configure();
-           
-            businessLogic = container.Resolve<IBusinessLogic>();
 
-            try
+            using (var scope = container.BeginLifetimeScope())
             {
-                int numberOfRecords = 1000;
-
-                // Load list of people from a file
-                List<Person> people = businessLogic.GetPeople(fileName: "People.csv").Take(numberOfRecords).ToList();
-
-                await InsertUsingBulkInsert(people);
-
-                InsertUsingStoredProcedure(people);
+                var app = scope.Resolve<IApplication>();
+                await app.Run();
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        private static async Task InsertUsingBulkInsert(List<Person> people)
-        {
-            Console.WriteLine($"Inserting {people.Count} records individually...");
-
-            // Use stop watch to determine how fast the update was
-            var stopWatch = new Stopwatch();
-
-            stopWatch.Start();
-
-            // Insert data
-            await businessLogic.InsertUsingBulkInsert(people);
-
-            // Stop the timer
-            stopWatch.Stop();
-
-            // Display time elapsed
-            Console.WriteLine($"Time Elapsed inserting records individually: {stopWatch.Elapsed.TotalSeconds}\n");
-        }
-
-        private static void InsertUsingStoredProcedure(List<Person> people)
-        {
-            Console.WriteLine($"Inserting {people.Count} records individually...");
-
-            // Use stop watch to determine how fast the update was
-            var stopWatch = new Stopwatch();
-
-            stopWatch.Start();
-
-            // Insert data
-            businessLogic.InsertUsingStoredProcedure(people);
-
-            // Stop the timer
-            stopWatch.Stop();
-
-            // Display time elapsed
-            Console.WriteLine($"Time Elapsed inserting records individually: {stopWatch.Elapsed.TotalSeconds}\n");
         }
     }
 }
