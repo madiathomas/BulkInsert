@@ -37,7 +37,7 @@ namespace Recurso.BulkInsert.Sample.BLL
         }
         private async Task InsertUsingBulkInsert(List<Person> people)
         {
-            Console.WriteLine($"Inserting {people.Count} records individually...");
+            Console.WriteLine($"Inserting {people.Count} records in bulk...");
 
             // Use stop watch to determine how fast the update was
             var stopWatch = new Stopwatch();
@@ -51,7 +51,7 @@ namespace Recurso.BulkInsert.Sample.BLL
             stopWatch.Stop();
 
             // Display time elapsed
-            Console.WriteLine($"Time Elapsed inserting records individually: {stopWatch.Elapsed.TotalSeconds}\n");
+            Console.WriteLine($"Time Elapsed inserting records in bulk: {stopWatch.Elapsed.TotalSeconds}\n");
         }
 
         private void InsertUsingStoredProcedure(List<Person> people)
