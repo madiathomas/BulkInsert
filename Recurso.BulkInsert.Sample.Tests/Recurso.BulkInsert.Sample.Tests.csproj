@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Recurso.BulkInsert.Sample.BLL\Recurso.BulkInsert.Sample.BLL.csproj" />
     <ProjectReference Include="..\Recurso.BulkInsert.Sample.DAL\Recurso.BulkInsert.Sample.DAL.csproj" />
     <ProjectReference Include="..\Recurso.BulkInsert\Recurso.BulkInsert.csproj" />
   </ItemGroup>

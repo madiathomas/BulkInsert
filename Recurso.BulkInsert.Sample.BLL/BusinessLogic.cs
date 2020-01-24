@@ -27,10 +27,10 @@ namespace Recurso.BulkInsert.Sample.BLL
             return _database.InsertUsingStoredProcedure(people);
         }
 
-        public async Task InsertUsingBulkInsert(string fileName, int numberOfRecords)
+        public async Task<int> InsertUsingBulkInsert(string fileName, int numberOfRecords)
         {
             var people = await _csvFile.GetPeople(fileName, numberOfRecords);
-            await _quickInsert.InsertUsingBulkInsert(people.Take(numberOfRecords).ToList());
+            return await _quickInsert.InsertUsingBulkInsert(people.Take(numberOfRecords).ToList());
         }
     }
 }
