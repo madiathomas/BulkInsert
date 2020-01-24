@@ -17,7 +17,7 @@ namespace Recurso.BulkInsert.Sample.BLL
             _businessLogic = businessLogic;
         }
 
-        public async Task Run()
+        public async Task<bool> Run()
         {
             int numberOfRecords = 1000;
             string fileName = "People.csv";
@@ -28,14 +28,18 @@ namespace Recurso.BulkInsert.Sample.BLL
                 await InsertUsingBulkInsert(fileName, numberOfRecords);
 
                 await InsertUsingStoredProcedure(fileName, numberOfRecords);
+
+                return true;
             }
             catch (BulkInsertFailedException ex)
             {
                 Console.WriteLine(ex.Message);
+                return false;
             }
             catch (StoredProcedureInsertFailedException ex)
             {
                 Console.WriteLine(ex.Message);
+                return false;
             }
         }
 

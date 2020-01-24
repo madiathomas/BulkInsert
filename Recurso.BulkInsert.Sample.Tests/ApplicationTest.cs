@@ -28,7 +28,10 @@ namespace Recurso.BulkSMS.Sample.Tests
             var application = new Application(businessLogicMock.Object);
 
             // Act
-            await application.Run();
+            bool actual = await application.Run();
+
+            // Assert
+            Assert.IsTrue(actual);
         }
 
         [TestMethod]
@@ -40,7 +43,10 @@ namespace Recurso.BulkSMS.Sample.Tests
             var application = new Application(businessLogicMock.Object);
 
             // Act
-            await application.Run();
+            bool actual = await application.Run();
+
+            // Assert
+            Assert.IsFalse(actual);
         }
 
         [TestMethod]
@@ -51,7 +57,10 @@ namespace Recurso.BulkSMS.Sample.Tests
             var application = new Application(businessLogicMock.Object);
 
             // Act
-            await application.Run();
+            bool actual = await application.Run();
+
+            // Assert
+            Assert.IsFalse(actual);
         }
     }
 }

@@ -7,6 +7,6 @@ namespace Recurso.BulkInsert.Sample.Common.Interfaces
 {
     public interface IApplication
     {
-        Task Run();
+        Task<bool> Run();
     }
 }

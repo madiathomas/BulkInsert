@@ -29,6 +29,7 @@ namespace Recurso.BulkInsert.Sample.Tests
             databaseMock.Setup(_ => _.InsertUsingStoredProcedure(It.IsAny<List<Person>>())).Returns(numberOfRecords);
             quickInsertMock.Setup(_ => _.InsertUsingBulkInsert(It.IsAny<List<Person>>())).ReturnsAsync(numberOfRecords);
             readCSVMock.Setup(_ => _.GetCSVLines(It.IsAny<string>())).ReturnsAsync(TestHelpers.GetCSVLines());
+
         }
 
         [TestMethod]
@@ -36,7 +37,7 @@ namespace Recurso.BulkInsert.Sample.Tests
         {
             // Arrange
             csvFile = new CSVFile(readCSVMock.Object);
-            people = await csvFile.GetPeople("MockedFIleName.csv", numberOfRecords);
+            people = await csvFile.GetPeople("MockedFileName.csv", numberOfRecords);
             csvFileMock.Setup(_ => _.GetPeople(It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(people);
 
             var businessLogic = new BusinessLogic(databaseMock.Object, csvFileMock.Object, quickInsertMock.Object);
@@ -53,7 +54,7 @@ namespace Recurso.BulkInsert.Sample.Tests
         {
             // Arrange
             csvFile = new CSVFile(readCSVMock.Object);
-            people = await csvFile.GetPeople("MockedFIleName.csv", numberOfRecords);
+            people = await csvFile.GetPeople("MockedFileName.csv", numberOfRecords);
             csvFileMock.Setup(_ => _.GetPeople(It.IsAny<string>(), It.IsAny<int>())).ReturnsAsync(people);
 
             var businessLogic = new BusinessLogic(databaseMock.Object, csvFileMock.Object, quickInsertMock.Object);
