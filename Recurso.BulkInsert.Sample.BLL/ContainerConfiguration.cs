@@ -13,6 +13,7 @@ namespace Recurso.BulkInsert.Sample.BLL
         {
             var builder = new ContainerBuilder();
 
+            builder.RegisterType<ReadCSV>().As<IReadCSV>();
             builder.RegisterType<CSVFile>().As<ICSVFile>();
             builder.RegisterType<QuickInsert>().As<IQuickInsert>();
             builder.RegisterType<DbConnection>().As<IDbConnection>();
