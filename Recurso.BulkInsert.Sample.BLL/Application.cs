@@ -19,22 +19,26 @@ namespace Recurso.BulkInsert.Sample.BLL
 
         public async Task Run()
         {
+            int numberOfRecords = 1000;
+            string fileName = "People.csv";
+
             try
             {
-                int numberOfRecords = 1000;
-
-                // Load list of people from a file
-                string fileName = "People.csv";
 
                 await InsertUsingBulkInsert(fileName, numberOfRecords);
 
                 await InsertUsingStoredProcedure(fileName, numberOfRecords);
             }
-            catch (Exception ex)
+            catch (BulkInsertFailedException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (StoredProcedureInsertFailedException ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
+
         private async Task InsertUsingBulkInsert(string fileName, int numberOfRecords)
         {
             Console.WriteLine($"Inserting {numberOfRecords} records in bulk...");

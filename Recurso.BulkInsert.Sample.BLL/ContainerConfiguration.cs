@@ -16,8 +16,6 @@ namespace Recurso.BulkInsert.Sample.BLL
             builder.RegisterType<CSVFile>().As<ICSVFile>();
             builder.RegisterType<QuickInsert>().As<IQuickInsert>();
             builder.RegisterType<DbConnection>().As<IDbConnection>();
-            builder.RegisterType<IConfigurationBuilder>().As<IConfigurationBuilder>();
-            builder.RegisterType<IConfigurationRoot>().As<IConfigurationRoot>();
             builder.RegisterType<AppSettings>().As<IAppSettings>();            
             builder.RegisterType<SqlConnectionFactory>().As<IDbConnectionFactory>();
             builder.RegisterType<Database>().As<IDatabase>();

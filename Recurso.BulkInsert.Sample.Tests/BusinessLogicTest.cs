@@ -14,9 +14,9 @@ namespace Recurso.BulkInsert.Sample.Tests
     [TestClass]
     public class BusinessLogicTest
     {
-        Mock<IDatabase> databaseMock = new Mock<IDatabase>();
-        Mock<IQuickInsert> quickInsertMock = new Mock<IQuickInsert>();
-        Mock<ICSVFile> csvFileMock = new Mock<ICSVFile>();
+        readonly Mock<IDatabase> databaseMock = new Mock<IDatabase>();
+        readonly Mock<IQuickInsert> quickInsertMock = new Mock<IQuickInsert>();
+        readonly Mock<ICSVFile> csvFileMock = new Mock<ICSVFile>();
         readonly Mock<IReadCSV> readCSVMock = new Mock<IReadCSV>();
 
         private CSVFile csvFile;
