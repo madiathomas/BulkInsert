@@ -31,7 +31,7 @@ namespace Recurso.BulkInsert.Sample.Tests
             var csvFile = new CSVFile(readCSVMock.Object);
 
             // Act
-            List<Person> people = await csvFile.GetPeople("MockedFileName.csv");
+            List<Person> people = await csvFile.GetPeople("MockedFileName.csv", 10);
 
             // Assert
             Assert.IsNotNull(people);

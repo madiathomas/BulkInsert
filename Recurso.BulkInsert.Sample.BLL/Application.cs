@@ -24,20 +24,20 @@ namespace Recurso.BulkInsert.Sample.BLL
                 int numberOfRecords = 1000;
 
                 // Load list of people from a file
-                List<Person> people = await _businessLogic.GetPeople(fileName: "People.csv");
+                string fileName = "People.csv";
 
-                await InsertUsingBulkInsert(people.Take(numberOfRecords).ToList());
+                await InsertUsingBulkInsert(fileName, numberOfRecords);
 
-                InsertUsingStoredProcedure(people.Take(numberOfRecords).ToList());
+                await InsertUsingStoredProcedure(fileName, numberOfRecords);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-        private async Task InsertUsingBulkInsert(List<Person> people)
+        private async Task InsertUsingBulkInsert(string fileName, int numberOfRecords)
         {
-            Console.WriteLine($"Inserting {people.Count} records in bulk...");
+            Console.WriteLine($"Inserting {numberOfRecords} records in bulk...");
 
             // Use stop watch to determine how fast the update was
             var stopWatch = new Stopwatch();
@@ -45,7 +45,7 @@ namespace Recurso.BulkInsert.Sample.BLL
             stopWatch.Start();
 
             // Insert data
-            await _businessLogic.InsertUsingBulkInsert(people);
+            await _businessLogic.InsertUsingBulkInsert(fileName, numberOfRecords);
 
             // Stop the timer
             stopWatch.Stop();
@@ -54,9 +54,9 @@ namespace Recurso.BulkInsert.Sample.BLL
             Console.WriteLine($"Time Elapsed inserting records in bulk: {stopWatch.Elapsed.TotalSeconds}\n");
         }
 
-        private void InsertUsingStoredProcedure(List<Person> people)
+        private async Task InsertUsingStoredProcedure(string fileName, int numberOfRecords)
         {
-            Console.WriteLine($"Inserting {people.Count} records individually...");
+            Console.WriteLine($"Inserting {numberOfRecords} records individually...");
 
             // Use stop watch to determine how fast the update was
             var stopWatch = new Stopwatch();
@@ -64,7 +64,7 @@ namespace Recurso.BulkInsert.Sample.BLL
             stopWatch.Start();
 
             // Insert data
-            _businessLogic.InsertUsingStoredProcedure(people);
+            await _businessLogic.InsertUsingStoredProcedure(fileName, numberOfRecords);
 
             // Stop the timer
             stopWatch.Stop();

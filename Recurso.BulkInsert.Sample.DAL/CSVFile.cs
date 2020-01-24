@@ -17,11 +17,11 @@ namespace Recurso.BulkInsert.Sample.DAL
             _readCSV = readCSV;
         }
 
-        public async Task<List<Person>> GetPeople(string fileName)
+        public async Task<List<Person>> GetPeople(string fileName, int numberOfRecords)
         {
             var lines = await _readCSV.GetCSVLines(fileName);
 
-            return lines.Skip(1).Select(p => FromCSV(p)).ToList();
+            return lines.Skip(1).Take(numberOfRecords).Select(p => FromCSV(p)).ToList();
         }
 
         private static Person FromCSV(string csvLine)

@@ -36,7 +36,7 @@ namespace Recurso.BulkInsert.Sample.Tests
         {
             //Arrange
             CSVFile csvFile = new CSVFile(readCSVMock.Object);
-            people = await csvFile.GetPeople("MockedFIleName.csv");
+            people = await csvFile.GetPeople("MockedFIleName.csv", 10);
 
             var database = new Database(iDbConnectionFactoryMock.Object);
 

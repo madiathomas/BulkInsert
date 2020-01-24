@@ -2,6 +2,7 @@
 using Recurso.BulkInsert.Sample.Common.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +14,6 @@ namespace Recurso.BulkInsert.Sample.BLL
         readonly IQuickInsert _quickInsert;
         readonly ICSVFile _csvFile;
 
-
         public BusinessLogic(IDatabase database, ICSVFile csvFile, IQuickInsert quickInsert)
         {
             _database = database;
@@ -21,19 +21,16 @@ namespace Recurso.BulkInsert.Sample.BLL
             _quickInsert = quickInsert;
         }
 
-        public int InsertUsingStoredProcedure(List<Person> people)
+        public async Task<int> InsertUsingStoredProcedure(string fileName, int numberOfRecords)
         {
+            var people = await _csvFile.GetPeople(fileName, numberOfRecords);
             return _database.InsertUsingStoredProcedure(people);
         }
 
-        public async Task InsertUsingBulkInsert(List<Person> people)
+        public async Task InsertUsingBulkInsert(string fileName, int numberOfRecords)
         {
-            await _quickInsert.InsertUsingBulkInsert(people);
-        }
-
-        public async Task<List<Person>> GetPeople(string fileName)
-        {
-            return await _csvFile.GetPeople(fileName);
+            var people = await _csvFile.GetPeople(fileName, numberOfRecords);
+            await _quickInsert.InsertUsingBulkInsert(people.Take(numberOfRecords).ToList());
         }
     }
 }

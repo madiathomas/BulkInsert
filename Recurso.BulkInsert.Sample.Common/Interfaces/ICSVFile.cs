@@ -6,6 +6,6 @@ namespace Recurso.BulkInsert.Sample.Common.Interfaces
 {
     public interface ICSVFile
     {
-        Task<List<Person>> GetPeople(string fileName);
+        Task<List<Person>> GetPeople(string fileName, int numberOfRecords);
     }
 }
