@@ -3,19 +3,25 @@ using Recurso.BulkInsert.Sample.Common.Interfaces;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Recurso.BulkInsert.Sample.DAL
 {
 
-    public class CSVFile: ICSVFile
+    public class CSVFile : ICSVFile
     {
-        public List<Person> GetPeople(string fileName)
+        private readonly IReadCSV _readCSV;
+
+        public CSVFile(IReadCSV readCSV)
         {
-            var people = File.ReadAllLines(fileName)
-                            .Skip(1)
-                            .Select(p => FromCSV(p))
-                            .ToList();
-            return people;
+            _readCSV = readCSV;
+        }
+
+        public async Task<List<Person>> GetPeople(string fileName)
+        {
+            var lines = await _readCSV.GetCSVLines(fileName);
+
+            return lines.Skip(1).Select(p => FromCSV(p)).ToList();
         }
 
         private static Person FromCSV(string csvLine)

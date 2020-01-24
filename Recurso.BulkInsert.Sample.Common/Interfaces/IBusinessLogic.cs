@@ -6,7 +6,7 @@ namespace Recurso.BulkInsert.Sample.Common.Interfaces
 {
     public interface IBusinessLogic
     {
-        List<Person> GetPeople(string fileName);
+        Task<List<Person>> GetPeople(string fileName);
         Task InsertUsingBulkInsert(List<Person> people);
         int InsertUsingStoredProcedure(List<Person> people);
     }

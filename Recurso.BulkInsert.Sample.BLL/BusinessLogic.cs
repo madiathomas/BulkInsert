@@ -31,9 +31,9 @@ namespace Recurso.BulkInsert.Sample.BLL
             await _quickInsert.InsertUsingBulkInsert(people);
         }
 
-        public List<Person> GetPeople(string fileName)
+        public async Task<List<Person>> GetPeople(string fileName)
         {
-            return _csvFile.GetPeople(fileName);
+            return await _csvFile.GetPeople(fileName);
         }
     }
 }

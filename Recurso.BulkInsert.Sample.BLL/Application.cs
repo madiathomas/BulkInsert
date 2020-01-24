@@ -24,11 +24,11 @@ namespace Recurso.BulkInsert.Sample.BLL
                 int numberOfRecords = 1000;
 
                 // Load list of people from a file
-                List<Person> people = _businessLogic.GetPeople(fileName: "People.csv").Take(numberOfRecords).ToList();
+                List<Person> people = await _businessLogic.GetPeople(fileName: "People.csv");
 
-                await InsertUsingBulkInsert(people);
+                await InsertUsingBulkInsert(people.Take(numberOfRecords).ToList());
 
-                InsertUsingStoredProcedure(people);
+                InsertUsingStoredProcedure(people.Take(numberOfRecords).ToList());
             }
             catch (Exception ex)
             {

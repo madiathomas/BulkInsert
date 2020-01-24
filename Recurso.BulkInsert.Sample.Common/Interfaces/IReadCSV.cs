@@ -1,11 +1,12 @@
-﻿using Recurso.BulkInsert.Sample.Common;
+﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Recurso.BulkInsert.Sample.Common.Interfaces
 {
-    public interface ICSVFile
+    public interface IReadCSV
     {
-        Task<List<Person>> GetPeople(string fileName);
+        Task<string[]> GetCSVLines(string path);
     }
 }
