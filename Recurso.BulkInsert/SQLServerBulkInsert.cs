@@ -13,6 +13,11 @@ namespace Recurso.BulkInsert
         /// </summary>
         public int BatchSize { get; set; } = 4000;
 
+        /// <summary>
+        /// Number of seconds for the bulk cooy operation to complete before it times out.
+        /// </summary>
+        public int BulkCopyTimeout { get; set; } = 0;
+
         private readonly IDbConnectionFactory _dbConnectionFactory;
 
         public SQLServerBulkInsert(IDbConnectionFactory dbConnectionFactory)
@@ -51,6 +56,7 @@ namespace Recurso.BulkInsert
             using SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(connection, sqlBulkCopyOptions, null)
             {
                 BatchSize = this.BatchSize,
+                BulkCopyTimeout = this.BulkCopyTimeout,
                 DestinationTableName = destinationTableName ?? sourceDataTable.TableName ?? typeof(T).Name,
             };
 

@@ -19,7 +19,7 @@ namespace Recurso.BulkInsert.Sample.BLL
 
         public async Task<bool> Run()
         {
-            int numberOfRecords = 1000;
+            int numberOfRecords = 10000;
             string fileName = "People.csv";
 
             try
