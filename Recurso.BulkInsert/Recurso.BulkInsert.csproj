@@ -5,15 +5,15 @@
     <Description>Bulk Insert Datatable or generic list into a SQL Server Database table</Description>
     <Copyright>https://licenses.nuget.org/MIT</Copyright>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/madiathomas/Recurso.BulkInsert</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/madiathomas/BulkInsert</PackageProjectUrl>
     <PackageIcon>recurso 400 x 400.png</PackageIcon>
     <PackageIconUrl />
-    <RepositoryUrl>https://github.com/madiathomas/Recurso.BulkInsert</RepositoryUrl>
+    <RepositoryUrl>https://github.com/madiathomas/BulkInsert</RepositoryUrl>
     <PackageTags>Bulk Insert, Bulk Save, Bulk Insert List to SQL Database, Insert Datatable to SQL database</PackageTags>
     <PackageReleaseNotes>Added BulkCopyTimeout and defaulted it to zero</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>2.0.6</Version>
+    <Version>2.0.7</Version>
     <PackageId>Recurso.BulkInsert</PackageId>
   </PropertyGroup>
 
