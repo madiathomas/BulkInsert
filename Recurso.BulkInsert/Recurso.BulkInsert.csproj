@@ -10,10 +10,10 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/madiathomas/BulkInsert</RepositoryUrl>
     <PackageTags>Bulk Insert, Bulk Save, Bulk Insert List to SQL Database, Insert Datatable to SQL database</PackageTags>
-    <PackageReleaseNotes>Added BulkCopyTimeout and defaulted it to zero</PackageReleaseNotes>
+    <PackageReleaseNotes>Added BulkCopyTimeout property to the interface</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>2.0.7</Version>
+    <Version>2.0.8</Version>
     <PackageId>Recurso.BulkInsert</PackageId>
     <Company>Recurso IT</Company>
     <Authors>Thomas Madia</Authors>

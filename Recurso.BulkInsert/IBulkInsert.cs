@@ -13,6 +13,11 @@ namespace Recurso.BulkInsert
         public int BatchSize { get; set; }
 
         /// <summary>
+        /// Number of seconds for the bulk cooy operation to complete before it times out. A value of 0 indicates no limit; the bulk copy will wait indefinitely.
+        /// </summary>
+        public int BulkCopyTimeout { get; set; }
+
+        /// <summary>
         /// Save a generic list into a database table
         /// </summary>
         /// <typeparam name="T"></typeparam>
