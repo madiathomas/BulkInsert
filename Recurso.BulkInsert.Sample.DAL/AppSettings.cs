@@ -17,7 +17,7 @@ namespace Recurso.BulkInsert.Sample.DAL
                 var configurationRoot = new ConfigurationBuilder().SetBasePath(directory).AddJsonFile(jsonFileName).Build();
                 return configurationRoot[$"AppSettings:{settingName}"];
             }
-            catch (FileNotFoundException ex)
+            catch (FileNotFoundException)
             {
                 throw;
             }
