@@ -15,7 +15,7 @@ namespace Recurso.BulkInsert.Tests
         readonly Mock<IDbConnectionFactory> dbConnectionFactoryMock = new Mock<IDbConnectionFactory>();
 
         private List<TestPerson> testPeople;
-        private readonly string connectionString = "Server=MockServer;Database=MockDatabase;Integrated Security=true; Connection Timeout=1";
+        private readonly string connectionString = "Server=9df895c4284b43b68b18fe9b5eefb410;Database=0308888e6593458e97cc90cbdc92001b;Integrated Security=true; Connection Timeout=1";
 
         [TestInitialize]
         public void Setup()
