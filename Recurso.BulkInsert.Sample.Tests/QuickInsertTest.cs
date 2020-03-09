@@ -14,13 +14,6 @@ namespace Recurso.BulkInsert.Sample.Tests
         readonly Mock<IBulkInsert> bulkInsertMock = new Mock<IBulkInsert>();
         readonly Mock<IReadCSV> readCSVMock = new Mock<IReadCSV>();
 
-        readonly List<Person> people;
-
-        [TestInitialize]
-        public void Setup()
-        {
-        }
-
         [TestMethod]
         public async Task QuickInsert_InsertListUsingBulkInsert()
         {
