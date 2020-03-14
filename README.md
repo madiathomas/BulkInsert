@@ -1,6 +1,6 @@
 ## BulkInsert Library
 
-Let's admit it, inserting bulk data row by row is painfully slow and chokes database servers. This library helps you to insert bulk data faster. 
+Inserting bulk data row by row is painfully slow and chokes database servers. This library helps you to insert bulk data faster. 
 
 You simply pass it a generic list of an object which mirrors the database table, and it will do the rest. If you already have your data in a [DataTable](https://docs.microsoft.com/en-us/dotnet/api/system.data.datatable?view=netstandard-2.1), you can pass it and it will save your data even faster. Check out the sample on how to use it. It uses [SQLBulkCopy](https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlbulkcopy?view=netstandard-2.1 "SqlBulkCOpy") in the background. **BulkInsert** is a free and open source .NET Standard library for inserting data to a SQL Server database in bulk. 
 
